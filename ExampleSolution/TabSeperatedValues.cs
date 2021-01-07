@@ -4,14 +4,14 @@ using System.IO;
 
 namespace ExampleSolution
 {
-    public abstract class TableFile
+    public class TabSeperatedValues
     {
         public Stream Stream { get; }
         public StreamReader StreamReader { get; }
 
         public string[] ColumnNames { get; }
 
-        public TableFile( Stream stream )
+        public TabSeperatedValues( Stream stream )
         {
             Stream          = stream;
             StreamReader    = new StreamReader( stream );
@@ -19,12 +19,12 @@ namespace ExampleSolution
             ColumnNames     = StreamReader.ReadLine().Split('\t');
         }
 
-        public TableFile( string filepath ) : this( new FileStream( filepath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite ) )
+        public TabSeperatedValues( string filepath ) : this( new FileStream( filepath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite ) )
         {
 
         }
 
-        public TableFile( byte[] buffer ) : this( new MemoryStream( buffer ) )
+        public TabSeperatedValues( byte[] buffer ) : this( new MemoryStream( buffer ) )
         {
 
         }

@@ -9,7 +9,7 @@ using System.Text;
 
 namespace ExampleSolution.Generics
 {
-    public class TableFile<TEntity> : TableFile, IEnumerable<TEntity> where TEntity : new()
+    public class TabSeperatedValues<TEntity> : TabSeperatedValues, IEnumerable<TEntity> where TEntity : new()
     {
         private PropertyInfo[] ColumnBindings { get; }
 
@@ -37,17 +37,17 @@ namespace ExampleSolution.Generics
             return result;
         }
 
-        public TableFile( Stream stream ) : base( stream )
+        public TabSeperatedValues( Stream stream ) : base( stream )
         {
             ColumnBindings = GetColumnBindings( typeof(TEntity), ColumnNames );
         }
 
-        public TableFile( string filepath ) : base( filepath )
+        public TabSeperatedValues( string filepath ) : base( filepath )
         {
             // ColumnBindings ??
         }
 
-        public TableFile( byte[] buffer ) : base( buffer )
+        public TabSeperatedValues( byte[] buffer ) : base( buffer )
         {
             // ColumnBindings ??
         }
